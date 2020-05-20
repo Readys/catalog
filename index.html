@@ -193,18 +193,18 @@
             }
         },
         methods: {
-            async loadCatalog() {
-                try {
-                    let data = await axios.post("https://krapipl.imumk.ru:8082/api/mobilev1/update", { 'data': '' });
-                    if (data.statusText == 'OK') {
-                        this.catalog = data.data.items;
-                    } else {
-                        throw new Error(data.status);
-                    }
-                } catch (e) {
-                    this.error = e;
-                }
-            },
+            //async loadCatalog() {
+            //    try {
+            //        let data = await axios.post("https://krapipl.imumk.ru:8082/api/mobilev1/update", { 'data': '' });
+            //        if (data.statusText == 'OK') {
+            //            this.catalog = data.data.items;
+            //        } else {
+            //            throw new Error(data.status);
+            //        }
+            //    } catch (e) {
+            //        this.error = e;
+            //    }
+            //},
         },
         mounted() {
             //this.loadCatalog();
