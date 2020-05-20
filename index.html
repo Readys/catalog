@@ -195,7 +195,7 @@
         methods: {
             async loadCatalog() {
                 try {
-                    let data = await axios.post("http://krapipl.imumk.ru:8082/api/mobilev1/update", { 'data': '' });
+                    let data = await axios.post("https://krapipl.imumk.ru:8082/api/mobilev1/update", { 'data': '' });
                     if (data.statusText == 'OK') {
                         this.catalog = data.data.items;
                     } else {
@@ -206,13 +206,10 @@
                     this.error = e;
                 }
             },
-            search() {
-                alert('ku');
-            },
-
         },
         mounted() {
             this.loadCatalog();
         }
     });
 </script>
+
