@@ -65,8 +65,8 @@
     <h1 class="u-text-center">
         Витрина
     </h1>
-    <div id="app" class="container ">
-        <div class="row justify-content-center text-center">
+    <div id="app" class="container">
+        <div class="row justify-content-center text-center col-md-offset-2">
             <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="input-group space">
                     <div class="input-group-prepend">
@@ -130,8 +130,8 @@
 
             </div>
         </div>
-        <div class="row card-deck justify-content-center  text-center justify-content-xs-center">
-            <card  v-for="card in  filteredData" :key="card.courseId" :item="card" :rb="filterBonuses"></card>
+        <div class="row">
+            <card v-for="card in  filteredData" :key="card.courseId" :item="card" :rb="filterBonuses"></card>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
@@ -142,7 +142,7 @@
 </body>
 </html>
 <script type="text/x-template" id="card-template">
-    <div class="card center-block col-xs-6" style="margin-top:15px !important; margin-bottom: 15px !important;" >
+    <div class="card center-block col-md-3 col-sm-4 col-xs-6" style="margin-top:0px !important; margin-bottom: 0px !important;" >
         <img class="card-img-top" src="https://www.imumk.ru/svc/coursecover/115" alt="Card image cap">
         <div class="card-body">
             <div class="sci-info" style="padding:3px 4px !important;">
