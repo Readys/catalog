@@ -130,8 +130,8 @@
 
             </div>
         </div>
-        <div class="row card-deck justify-content-center  text-center">
-            <card v-for="card in  filteredData" :key="card.courseId" :item="card" :rb="filterBonuses"></card>
+        <div class="row card-deck justify-content-center  text-center justify-content-xs-center">
+            <card  v-for="card in  filteredData" :key="card.courseId" :item="card" :rb="filterBonuses"></card>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
@@ -142,7 +142,7 @@
 </body>
 </html>
 <script type="text/x-template" id="card-template">
-    <div class="card center-block" style="margin-top:15px !important; margin-bottom: 15px !important;" >
+    <div class="card center-block col-xs-6" style="margin-top:15px !important; margin-bottom: 15px !important;" >
         <img class="card-img-top" src="https://www.imumk.ru/svc/coursecover/115" alt="Card image cap">
         <div class="card-body">
             <div class="sci-info" style="padding:3px 4px !important;">
