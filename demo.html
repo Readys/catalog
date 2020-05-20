@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Каталог</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.imumk.ru/Content/skins/bubble/css/main.css?5274329"/>
+
+    <style>
+        .card-columns {
+          @@include media-breakpoint-only(lg) {
+            column-count: 4;
+          }
+          @@include media-breakpoint-only(xl) {
+            column-count: 5;
+          }
+        }
+        .card {
+            max-width: 170px;
+            min-width: 170px;
+            float: none;
+            box-sizing: border-box;
+            overflow: hidden;
+            display: block;
+            width: 170px;
+            min-height: 260px;
+            border: solid 1px #b5b5b5;
+            border-radius: 10px !important;
+            background: #fff;
+        }
+        .card-deck {
+
+
+        }
+
+        .u-text-center {
+            text-align: center !important;
+        }
+
+        .left-round {
+            border-radius: 6px 0px 0px 6px !important;
+        }
+        .right-round {
+            border-radius: 0px 6px 6px 0px !important;
+        }
+
+        .allround {
+            border-radius: 6px 6px 6px 6px !important;
+        }
+
+        .bordur {
+            border: 1px solid #CED4DA;
+            border-radius: 6px;
+        }
+
+ 
+    </style>
+</head>
+<body>
+    <h1 class="u-text-center">
+        Витрина
+    </h1>
+    <div id="app" class="container ">
+        <div class="row justify-content-center">
+            <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text left-round" id=""><i class="fa fa-search" style=""></i></span>
+                    </div>
+                    <input class="bordur right-round" v-model="filterSearch" placeholder=" > 2 символов..." type="text" id="search" name="search">
+                </div>
+                <div class="input-group">
+                    <select class="custom-select bordur allround" v-model="filterSubject" id="subj" name="subj">
+                        <option value="">Все предметы</option>
+                        <option>Алгебра</option>
+                        <option>Английский язык</option>
+                        <option>Биология</option>
+                        <option>География</option>
+                        <option>Геометрия</option>
+                        <option>Демо-версия</option>
+                        <option>Информатика</option>
+                        <option>История</option>
+                        <option>Литература</option>
+                        <option>Математика</option>
+                        <option>Обществознание</option>
+                        <option>Окружающий мир</option>
+                        <option>Робототехника</option>
+                        <option>Русский язык</option>
+                        <option>Физика</option>
+                        <option>Химия</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <select class="custom-select allround" v-model="filterGenre" id="genre" name="genre">
+                        <option value="">Все жанры</option>
+                        <option>Демо</option>
+                        <option>Задачник</option>
+                        <option>Подготовка к ВПР</option>
+                        <option>Подготовка к ЕГЭ</option>
+                        <option>Рабочая тетрадь</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <select class="custom-select allround" v-model="filterGrade" id="grade" name="grade">
+                        <option value="">Все классы</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <select class="custom-select allround" v-model="filterBonuses" id="Bonuses" name="Bonuses">
+                        <option selected value="0">Рубли</option>
+                        <option value="1">Бонусы</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-deck justify-content-center">
+            <card v-for="card in  filteredData" :key="card.courseId" :item="card" :rb="filterBonuses"></card>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+</body>
+</html>
+<script type="text/x-template" id="card-template">
+    <div style="margin-top:15px !important; margin-bottom: 15px !important;" class="card center-block">
+        <img class="card-img-top" src="https://www.imumk.ru/svc/coursecover/115" alt="Card image cap">
+        <div class="card-body">
+            <div class="sci-info" style="padding:3px 4px !important;">
+                <p class="sci-title">{{item.title}}</p>
+                <p v-if="item.grade.length < 3" class="sci-grade"><span>{{item.grade}}</span> класс</p>
+                <p v-else class="sci-grade"><span>{{item.grade}}</span> классы</p>
+                <p class="sci-genre">{{item.genre}}</p>
+                <p class="sci-meta"><a :href="item.shopUrl">Подробнее</a></p>
+                <p class="sci-controls">
+                    <a v-if="rb == 0" href="#" style="border-radius:6px !important;" class="pure-button pure-button-primary btn-fluid">{{item.price}}<span> ₽</span></a>
+                    <a v-else href="#" style="border-radius:6px !important;" class="pure-button pure-button-primary btn-fluid">{{item.priceBonus}}<span> Б</span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('card', {
+        props: ['item','rb'],
+        template: '#card-template'
+    })
+</script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                catalog: null,
+                filterSearch: '',
+                filterSubject: '',
+                filterGenre: '',
+                filterGrade: '',      
+                filterBonuses: 0,
+            };
+        },
+        computed: {
+            filteredData: function () {
+
+                var filtredCatalog = this.catalog
+
+                if (this.filterSearch != '' && this.filterSearch.length > 2 ) {
+                    filtredCatalog = filtredCatalog.filter(el => el.title != null && el.title.toLowerCase().match(this.filterSearch.toLowerCase()))
+                }
+
+                if (this.filterSubject != '') {
+                    filtredCatalog = filtredCatalog.filter(el => el.subject != null && el.subject.toLowerCase().match(this.filterSubject.toLowerCase()))
+                }
+
+                if (this.filterGenre != '') {
+                    filtredCatalog = filtredCatalog.filter(el => el.genre != null && el.genre.toLowerCase().match(this.filterGenre.toLowerCase()))
+                }
+
+
+                if (this.filterGrade != '') {
+                    filtredCatalog = filtredCatalog.filter(el => el.grade != null && el.grade.toLowerCase().match(this.filterGrade.toLowerCase()))
+                }
+
+                return filtredCatalog;
+            }
+        },
+        methods: {
+            async loadCatalog() {
+                try {
+                    let data = await axios.post("http://krapipl.imumk.ru:8082/api/mobilev1/update", { 'data': '' });
+                    if (data.statusText == 'OK') {
+                        this.catalog = data.data.items;
+                        //alert('ku');
+                    } else {
+                        throw new Error(data.status);
+                    }
+                } catch (e) {
+                    this.error = e;
+                }
+            },
+            search() {
+                alert('ku');
+            },
+
+        },
+        mounted() {
+            this.loadCatalog();
+        }
+    });
+</script>
+
